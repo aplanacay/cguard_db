@@ -4,17 +4,10 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'name' => 'CGUARD DB',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
-        /*'assetManager' => [
-            'bundles' => [
-                'dmstr\web\AdminLteAsset' => [
-                    'skin' => 'skin-blue',
-                ],
-            ],
-        ],   */   
-
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'gvMGsL1wby39otFLK2keVU3_VmMZW9Vd',
@@ -61,7 +54,7 @@ $config = [
         'view' => [
             'theme' => [
                  'pathMap' => [
-                    '@app/views' => '@vendor/dmstr/yii2-adminlte-asset/example-views/yiisoft/yii2-app'
+                    '@app/views' => '@app/views'
                  ],
             ],
         ],

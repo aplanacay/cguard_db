@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 
 //for adminlte
-class AdminLtePluginAsset extends AssetBundle
+/*class AdminLtePluginAsset extends AssetBundle
 {
     public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins';
     public $js = [
@@ -29,7 +29,7 @@ class AdminLtePluginAsset extends AssetBundle
     public $depends = [
         'dmstr\web\AdminLteAsset',
     ];
-}
+}*/
 class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
@@ -44,3 +44,15 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
     ];
 }
+
+/*class AppAsset extends AssetBundle
+{
+    public $sourcePath = '@bower/';
+    public $css = ['admin-lte/dist/css/AdminLTE.css'];
+    public $js = ['admin-lte/dist/js/AdminLTE/app.js'];
+    public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
+    ];
+}*/

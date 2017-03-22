@@ -2,15 +2,16 @@
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->name;
+$this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
+        <h1>Congratulations!</h1>
 
-    </div>
-    <div class="chart">
-        <canvas id="barChart" style="height: 200px; width: 417px;" height="400" width="834"></canvas>
+        <p class="lead">You have successfully created your Yii-powered application.</p>
+
+        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 
     <div class="body-content">
