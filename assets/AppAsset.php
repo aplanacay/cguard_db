@@ -32,6 +32,7 @@ use yii\web\AssetBundle;
 }*/
 class AppAsset extends AssetBundle
 {
+    //public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/chartjs/';
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [

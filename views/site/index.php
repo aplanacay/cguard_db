@@ -3,50 +3,94 @@
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
+
 ?>
 <div class="site-index">
-
-    <div class="jumbotron">
-
-    </div>
-    <div class="chart">
-        <canvas id="barChart" style="height: 200px; width: 417px;" height="400" width="834"></canvas>
-    </div>
-
     <div class="body-content">
+        <div class="table-responsive col-lg-4">
+            <?php
+                use miloschuman\highcharts\Highcharts;
+                use yii\db\Query;
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                $xQuery = new Query;
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                $xQuery->select('region_name')
+                        ->from('cguard_passport')
+                        ->groupby('region_name');
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                $xAxisArray = $xQuery->all();
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                $xAxis = array();
+                
+                foreach($xAxisArray as $value){
+                    array_push($xAxis, $value['region_name']);
+                }
+                
+                $dataQuery = new Query;
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                $dataQuery->select('count(*)')
+                            ->from('cguard_passport')
+                            ->groupby('region_name');
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                $dataArray = $dataQuery->all();
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
+                $data = array();
 
+                foreach($dataArray as $value){
+                    array_push($data, $value['count']);
+                }
+
+                echo Highcharts::widget([
+                   'options' => [
+                      'chart' => [
+                        'type' => 'column',
+                      ],
+                      'title' => ['text' => 'Collections per Region'],
+                      'xAxis' => [
+                         'categories' => $xAxis,
+                      ],
+                      'yAxis' => [
+                         'title' => ['text' => 'Collections']
+                      ],
+                      'series' => [
+                         [
+                            'name' => 'Collections',
+                            'data' => $data,
+                         ],
+                      ],
+                      'responsive' => [
+                            'rules' => [
+                            'condition' => [
+                                'maxWidth' => 500,
+                            ],
+                            'chartOptions' => [
+                                'legend' => [
+                                    'align' => 'center',
+                                    'verticalAlign' => 'bottom',
+                                    'layout' => 'horizontal',
+                                ],
+                            ],
+                            'yAxis' => [
+                                'labels' => [
+                                    'align' => 'left',
+                                    'x' => 0,
+                                    'y' => -5,
+                                ],
+                            ],
+                            'title' => [
+                                'text' => 'null',
+                            ],                    
+                            ],
+                            'subtitle' => [
+                                'text' => 'null',
+                            ],
+                            'credits' => [
+                                'enabled' => 'false',
+                            ],
+                        ],                        
+                      ]
+                ]);
+            ?>
+        </div>  
     </div>
 </div>
