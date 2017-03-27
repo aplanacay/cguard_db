@@ -1,16 +1,15 @@
 <?php
 
+use miloschuman\highcharts\Highcharts;
+use yii\db\Query;
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
-
 ?>
 <div class="site-index">
     <div class="body-content">
-        <div class="table-responsive col-lg-4">
+        <div class="table-responsive col-lg-10 col-lg-offset-1">
             <?php
-                use miloschuman\highcharts\Highcharts;
-                use yii\db\Query;
 
                 $xQuery = new Query;
 
@@ -55,7 +54,7 @@ $this->title = Yii::$app->name;
                       'series' => [
                          [
                             'name' => 'Collections',
-                            'data' => $data,
+                            'data' => $data,                            
                          ],
                       ],
                       'responsive' => [
@@ -92,5 +91,80 @@ $this->title = Yii::$app->name;
                 ]);
             ?>
         </div>  
+
+        <div class="table-responive col-lg-4">
+          <?php
+
+            /*$dataQuery = new Query;
+
+            $dataQuery->select('count(*), region_name')
+                        ->from('cguard_passport')
+                        ->groupby('region_name');
+
+            $dataArray = $dataQuery->all();
+
+            $data = array();
+
+            foreach($dataArray as $value){
+                array_push($data, $value['count']);
+            }
+            print_r($data);
+            $name = array();
+
+             foreach($dataArray as $value){
+                array_push($name, $value['region_name']);
+            }
+            print_r($name);
+
+            echo Highcharts::widget([
+              'options' => [
+                  'chart' => [
+                    'type' => 'pie',
+                  ],
+                  'title' => [
+                    'text' => 'Distribution of Collections per Island Group',
+                  ],
+                  'series' => [
+                      'name' => 'Brands',
+                      'colorByPoint' => true,
+                      'data' => [[
+                          'name' => 'Microsoft Internet Explorer',
+                          'y' => 56.33
+                      ], 
+                      [
+                          'name' => 'Chrome',
+                          'y' => 24.03,
+                          'sliced' => true,
+                          'selected' => true
+                      ], 
+                      [
+                          'name' => 'Firefox',
+                          'y' => 10.38
+                      ], 
+                      [
+                          'name' => 'Safari',
+                          'y' => 4.77
+                      ], 
+                      [
+                          'name' => 'Opera',
+                          'y' => 0.91
+                      ], 
+                      [
+                          'name' => 'Proprietary or Undetectable',
+                          'y' => 0.2
+                      ]],
+                  ],
+                  'series' => [
+                    'name' => 'Collections',
+                    'data' => [
+                      'name' => $name,
+                      'y' => $data,
+                    ],                    
+                  ],
+                  'series' => 
+              ],
+            ]);*/
+          ?>
+        </div>
     </div>
 </div>

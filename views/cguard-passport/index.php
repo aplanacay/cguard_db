@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CguardPassportSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cguard Passport';
+$this->title = 'CGUARD Passport';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cguard-passport-index">
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                  'longitude',
                  'altitude',
                  'crop',
-                 'variety',
+                 */'variety',/*
                  'meaning_of_name',
                  'language_dialect',
                  'date_planted',

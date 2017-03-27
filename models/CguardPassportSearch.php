@@ -61,9 +61,10 @@ class CguardPassportSearch extends CguardPassport
         $query->andFilterWhere([
             'cguard_id' => $this->cguard_id,
             'date_collected' => $this->date_collected,
+            'region_no' => $this->region_no,
         ]);
 
-        $query->andFilterWhere(['ilike', 'region_no', $this->region_no])
+        $query//->andFilterWhere(['ilike', 'region_no', $this->region_no])
             ->andFilterWhere(['ilike', 'region_name', $this->region_name])
             ->andFilterWhere(['ilike', 'collection_no', $this->collection_no])
             ->andFilterWhere(['ilike', 'collectors', $this->collectors])
