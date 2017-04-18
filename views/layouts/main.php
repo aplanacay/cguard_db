@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use lo\widgets\SlimScroll;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -27,6 +28,7 @@ if (Yii::$app->controller->action->id === 'login') {
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
     <?php $this->beginPage() ?>
+
     <!DOCTYPE html>
     <html lang="<?= Yii::$app->language ?>">
     <head>
@@ -36,8 +38,10 @@ if (Yii::$app->controller->action->id === 'login') {
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
+
     <body class="fixed hold-transition skin-green sidebar-mini sidebar-collapse">
     <?php $this->beginBody() ?>
+
     <div class="wrapper">
 
         <?= $this->render(

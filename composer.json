@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "dmstr/yii2-adminlte-asset": "2.*",
         "almasaeed2010/adminlte": "*",
-        "miloschuman/yii2-highcharts-widget": "dev-master"
+        "miloschuman/yii2-highcharts-widget": "dev-master",
+        "loveorigami/yii2-slimscroll-widget": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
